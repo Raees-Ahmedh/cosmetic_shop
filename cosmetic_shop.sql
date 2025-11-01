@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 01, 2025 at 05:47 PM
+-- Generation Time: Nov 01, 2025 at 06:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `password`, `email`, `created_at`) VALUES
-(1, 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@cosmetic.com', '2025-11-01 16:45:43');
+(1, 'admin', '$2y$10$DJVcKamk4tqijlVjIACoX.dyRgrsshwQZKkVzM1ONi.YDgDC0ZWme', 'admin@cosmetic.com', '2025-11-01 16:45:43');
 
 -- --------------------------------------------------------
 
@@ -70,6 +70,14 @@ CREATE TABLE `orders` (
   `order_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `total_amount`, `status`, `order_date`) VALUES
+(1, 1, 650.00, 'pending', '2025-11-01 17:32:28'),
+(2, 1, 2300.00, 'pending', '2025-11-01 17:33:18');
+
 -- --------------------------------------------------------
 
 --
@@ -83,6 +91,15 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
+(1, 1, 3, 1, 650.00),
+(2, 2, 1, 2, 700.00),
+(3, 2, 4, 1, 900.00);
 
 -- --------------------------------------------------------
 
@@ -102,6 +119,16 @@ CREATE TABLE `products` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `stock`, `category`, `created_at`, `updated_at`) VALUES
+(1, 'Face Wash', 'Javees Herbals Grapes Face Wash', 700.00, '1762017789_690641fd3a53d.jpg', 30, 'Skincare', '2025-11-01 17:23:09', '2025-11-01 17:23:09'),
+(2, 'Night Cream', 'Javees Herbals Avocado Night Cream', 850.00, '1762018047_690642ff52720.jpg', 20, 'Skincare', '2025-11-01 17:27:27', '2025-11-01 17:27:27'),
+(3, 'Eye Contour Gel', 'Javees Herbals Gold Eye Contoure Gel', 650.00, '1762018132_6906435456064.jpg', 19, 'Skincare', '2025-11-01 17:28:52', '2025-11-01 17:28:52'),
+(4, 'Face Scrub', 'Apricot & Almond Face Scrub', 900.00, '1762018227_690643b3442ce.jpg', 20, 'Foundation', '2025-11-01 17:30:27', '2025-11-01 17:30:27');
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +145,13 @@ CREATE TABLE `users` (
   `address` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `full_name`, `phone`, `address`, `created_at`) VALUES
+(1, 'raees', 'raees@gmail.com', '$2y$10$6Kk7kEUu7z4.56fYtf0xxeLmg0bvByixI/gefmaUI4Ge9Nd/TjgVW', 'Raees Ahamedh', '0764953014', '114/5, Cinnamon Garden, Beruwala', '2025-11-01 17:31:47');
 
 --
 -- Indexes for dumped tables
@@ -182,31 +216,31 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
