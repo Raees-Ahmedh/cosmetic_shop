@@ -71,10 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             <button type="submit" class="btn">Login</button>
         </form>
-        
-        <p style="text-align: center; margin-top: 1rem; color: #666;">
-            Default credentials: admin / admin123
-        </p>
+    
     </div>
 
     <footer>
