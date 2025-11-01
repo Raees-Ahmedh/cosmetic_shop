@@ -1,1 +1,1 @@
-# PHP_WebProject
+# Admin login: admin / admin123
